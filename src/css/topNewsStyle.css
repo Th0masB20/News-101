@@ -1,0 +1,85 @@
+#image-grid-container{
+    display:block;
+    position:relative;
+    overflow:hidden;
+    width:inherit;
+    height:inherit;
+}
+
+#image-grid{
+    display:grid;
+    grid-template: auto/ auto auto auto;
+    position:absolute;
+    left:var(--startingPosition);
+    width:inherit;
+    height:inherit;
+}
+
+.animate-grid{
+    animation: animateGrid 24s cubic-bezier(.2,1,.2,1) infinite ;
+}
+
+@keyframes animateGrid{
+    0%{left:calc(var(--startingPosition) + 0.1px)}
+    30%{left:var(--startingPosition)}
+    33%{left:calc(-1*var(--headerDisplayWidth) + 0.1vw)} /*move*/
+    63%{left:calc(-1*var(--headerDisplayWidth))}
+    66%{left: calc(-2*var(--headerDisplayWidth) + 0.1vw)} /*move*/
+    96%{left:calc(-2*var(--headerDisplayWidth))}
+    99%{left:var(--startingPosition)}
+}
+
+#image-grid img{
+    display: block;
+    width:inherit;
+    height:inherit;
+    object-fit:cover;
+    margin:auto;
+    z-index: 0 !important;
+}
+
+#image-description{
+    z-index: 1;
+    position:absolute;
+    bottom:0;
+    background-color: rgba(0,0,0,0.5);
+    height:70px;
+    width:inherit;
+}
+
+#image-link{
+    display: inline-block;
+    text-decoration: none;
+    width:inherit;
+    height:inherit;
+}
+
+.myScale{
+    transition:transform 0.5s;
+}
+
+#image-grid-container:hover img.myScale{
+    transform: scale(1.04);
+}
+
+#gridDescription{
+    display: block;
+    color:white;
+    font-size: 18px;
+    margin-left:10px;
+    text-align:center;
+}
+
+.animate-description{
+    animation: changeContent 8s linear infinite;
+}
+
+@keyframes changeContent {
+    0%{filter:opacity(0)}
+
+    25%{filter:opacity(0.99)}
+    85%{filter:opacity(1)}
+
+    90%{filter:opacity(0.01)}
+    100%{filter:opacity(0)}
+}
