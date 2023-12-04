@@ -72,8 +72,6 @@ function changeImageData(e = null,pointer, changePointer, changeUrl,changeCounte
         child.removeAttribute('class');
     }
 
-    console.log(count);
-
     changeUrl(images[count].url);
     imageGrid.children[count].setAttribute('class','myScale')
   

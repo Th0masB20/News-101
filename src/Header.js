@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import './css/header.css';
 import { NewsHighlight } from './TopNews';
 
@@ -25,23 +26,33 @@ const TopNewsSection = (prop) => {
 
 const Navigation = (prop) => {
     const {topic, changePage} = prop;
+    const root = document.querySelector(':root');
+    const navLinks = useRef(null);
     return(
         <nav id='navigation-bar'>
-            <ul>
-                <li><a id='currentPage' onClick={(e) => {updateTopic(e,topic, changePage)}}>Home</a></li>
-                <li><a onClick={(e) => {updateTopic(e,topic,changePage)}}>Sports</a></li>
-                <li><a onClick={(e) => {updateTopic(e,topic,changePage)}}>Business</a></li>
-                <li><a onClick={(e) => {updateTopic(e,topic,changePage)}}>Entertainment</a></li>
-                <li><a onClick={(e) => {updateTopic(e,topic,changePage)}}>Health</a></li>
-                <li><a onClick={(e) => {updateTopic(e,topic,changePage)}}>Science</a></li>
-                <li><a onClick={(e) => {updateTopic(e,topic,changePage)}}>Technology</a></li>
+            <div id='dropDownMenu' onClick={() => showDropDown(root)}>Home</div>
+            <ul ref={navLinks}>
+                <li><a id='currentPage' onClick={(e) => {updateTopic(e,topic, changePage,root)}}>Home</a></li>
+                <li><a onClick={(e) => {updateTopic(e,topic,changePage,root)}}>Sports</a></li>
+                <li><a onClick={(e) => {updateTopic(e,topic,changePage,root)}}>Business</a></li>
+                <li><a onClick={(e) => {updateTopic(e,topic,changePage,root)}}>Entertainment</a></li>
+                <li><a onClick={(e) => {updateTopic(e,topic,changePage,root)}}>Health</a></li>
+                <li><a onClick={(e) => {updateTopic(e,topic,changePage,root)}}>Science</a></li>
+                <li><a onClick={(e) => {updateTopic(e,topic,changePage,root)}}>Technology</a></li>
             </ul>        
         </nav>      
     )
 }
 
-function updateTopic(e,topic,changePage)
+function showDropDown(root){
+    root.style.setProperty('--dropDownDisplay','block');
+}
+
+function updateTopic(e,topic,changePage,root)
 {
+    let navBar = document.querySelector('#navigation-bar');
+    let dropDownMenu = document.querySelector('#dropDownMenu');
+
     if(e.target.innerHTML.toLowerCase() === 'home')
     {
         topic[0] = '';
@@ -57,14 +68,16 @@ function updateTopic(e,topic,changePage)
         changePage('https://newsapi.org/v2/top-headlines?country=us&' +`category=${topic[0]}`); //&apiKey
     }
 
-    for(let child of document.getElementById('navigation-bar').children[0].children)
+    for(let child of navBar.children[1].children)
     {
         child.children[0].removeAttribute('id');
     }
+
     e.target.setAttribute('id','currentPage');
+    dropDownMenu.innerHTML = e.target.innerHTML;
+    root.style.setProperty('--dropDownDisplay','none');
 
     window.scrollTo(0,0);
-
 }
 
 export default CompleteHeader;

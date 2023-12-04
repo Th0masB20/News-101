@@ -1,3 +1,7 @@
+:root{
+    --dropDownDisplay:none;
+}
+
 .header{
     display: block;
     margin:20px;
@@ -19,8 +23,9 @@
 }
 
 #navigation-bar{
-    display:block;
-    margin:auto;
+    display:flex;
+    justify-content: center;
+    align-items:center;
 
     position:-webkit-sticky;
     position:sticky;
@@ -32,12 +37,6 @@
 
     height:50px;
     width:inherit;
-}
-
-#navigation-bar ul{
-    position:absolute;
-    bottom:22%;
-    right:10%;
 }
 
 #navigation-bar li{
@@ -73,4 +72,39 @@
     width:inherit;
     height:3px;
     background-color:rgb(255, 152, 141) !important;
+}
+
+#dropDownMenu{
+    display:none;  
+}
+
+
+@media screen and (max-width:1200px){
+    #navigation-bar li{
+        font-size:18px;
+    }
+}
+
+@media screen and (max-width:1040px){
+    #navigation-bar li{
+        font-size:16px;
+    }
+}
+
+
+@media screen and (max-width:950px){
+    #navigation-bar ul{
+        display:var(--dropDownDisplay);
+        position:absolute;
+        top:40px;
+        background-color: black;
+    }
+
+    #navigation-bar li{
+        display:block;
+    }
+
+    #dropDownMenu{
+        display:block;
+    }
 }
