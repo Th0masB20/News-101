@@ -1,5 +1,5 @@
 ## Get API Keys 
-Get News api key from https://newsapi.org/
+Get News api key from https://newsapi.org/ \
 Get Stock api from https://twelvedata.com/
 
 ## Available Scripts
