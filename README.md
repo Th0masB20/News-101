@@ -1,7 +1,7 @@
 ## Get API Keys 
 Get News api key from https://newsapi.org/ \
 Get Stock api from https://twelvedata.com/ \
-Update values in the index.js file.\
+Update values in the index.js file. 
 
 ## Available Scripts
 
