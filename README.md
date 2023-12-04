@@ -1,6 +1,6 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Get API Keys 
+Get News api key from https://newsapi.org/
+Get Stock api from https://twelvedata.com/
 
 ## Available Scripts
 

@@ -60,32 +60,24 @@ export const NewsHighlight = (prop) => {
 
 function changeImageData(e = null,pointer, changePointer, changeUrl,changeCounter,images,count){
     let imageGrid = document.querySelector('#image-grid');
+
+    if(count == 3)
+    {
+        changeCounter(0);
+        count = 0;
+    }
+
     for(let child of imageGrid.children)
     {
         child.removeAttribute('class');
     }
 
-    if(count == 0)
-    {
-        changeUrl(images[0].url);
-        imageGrid.children[0].setAttribute('class','myScale')
-    }
-    else if(count == 1)
-    {
-        changeUrl(images[1].url);
-        imageGrid.children[1].setAttribute('class','myScale')
-    }
-    else if(count == 2)
-    {
-        changeUrl(images[2].url);
-        imageGrid.children[2].setAttribute('class','myScale')
-    }
+    console.log(count);
+
+    changeUrl(images[count].url);
+    imageGrid.children[count].setAttribute('class','myScale')
   
     changeCounter(prevCount => prevCount + 1);
-    if(count > 2)
-    {
-        changeCounter(0);
-    }
 
     e.target.innerHTML = pointer.nodeValue;
     changePointer(pointer.next);

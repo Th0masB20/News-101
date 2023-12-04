@@ -7,7 +7,8 @@ import './css/style.css';
 
 
 
-const apiKey = '';
+const newsApiKey = '';//get api key form https://newsapi.org/
+const stockApiKey = '';//get api key form https://twelvedata.com/
 const topic = [''];
 let images = [];
 let circularLL;
@@ -22,8 +23,9 @@ const MainBody = (prop) => {
             <>
                 <main id='main-body'>
                     <CompleteHeader topic={topic} changePage={changePage} images={images} circularLL={circularLL}/>
-                    {topic[0] === 'business'? <StockMarket/>: null}
+                    {topic[0] === 'business'? <StockMarket stockApiKey={stockApiKey}/>: null}
                     <MainNewsSection data={data} images={images}/>
+                    <Footer/>
                 </main>
             </>
         );
@@ -113,7 +115,7 @@ function PageComponent(){
             if(!cachedPage || cachedPage.time != date.getHours() || cachedPage.date != date.getDate() || cachedPage.month != date.getMonth())
             {
                 try{
-                    const data = await fetch(url + `&apiKey=${apiKey}`);
+                    const data = await fetch(url + `&apiKey=${newsApiKey}`);
                     const parsedData = await data.json(); 
                     
                     if(cachedPage)
@@ -155,6 +157,15 @@ function PageComponent(){
             <Background topic={topic} changePage={changePage}/>
             <MainBody data={data} changePage={changePage}/>
         </>
+    )
+}
+
+function Footer(){
+    return(
+        <footer id='pageFooter'>
+            <h3>&copy;News 101</h3>
+            <p>Follow on our social media pages</p>
+        </footer>
     )
 }
 
