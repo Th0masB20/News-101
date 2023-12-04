@@ -7,8 +7,8 @@ import './css/style.css';
 
 
 
-const newsApiKey = '9ed276cba0714b0791db0d8507107fe2';//get api key form https://newsapi.org/
-const stockApiKey = 'dd445a3bc79149958acea790ee79317f';//get api key form https://twelvedata.com/
+const newsApiKey = '';//get api key form https://newsapi.org/
+const stockApiKey = '';//get api key form https://twelvedata.com/
 const topic = [''];
 let images = [];
 let circularLL;
