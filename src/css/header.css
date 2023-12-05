@@ -97,7 +97,8 @@
         display:var(--dropDownDisplay);
         position:absolute;
         top:40px;
-        background-color: black;
+        background-color: inherit;
+        border:2px solid black;
     }
 
     #navigation-bar li{
@@ -106,5 +107,20 @@
 
     #dropDownMenu{
         display:block;
+        background-color: #313131;
+        padding:5px 40px; 
+        font-size:18px;
+    }
+
+    #dropDownMenu:hover{
+        cursor:pointer;
+        color:rgb(194, 194, 194);
+    }
+
+}
+
+@media screen and (max-width:800px){
+    :root{
+        --headerDisplayWidth:480px !important;
     }
 }

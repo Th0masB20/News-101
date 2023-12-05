@@ -6,6 +6,10 @@
     font-family: 'Noto Sans';
 }
 
+body{
+    min-width: 800px;
+}
+
 :root{
     --startingPosition:0px;
     --headerDisplayWidth:60vw;
@@ -68,6 +72,7 @@ h2.section-headers{
 
     width:auto;
     max-width: 100%;
+    min-width:520px;
     height:auto;
 
     top:20vh;
@@ -204,5 +209,13 @@ h2.section-headers{
     }
     .article-body{
         width:270px;
+    }
+}
+
+@media screen and (max-width:950px){
+    #bottom-grid-layout{
+        display:grid;
+        grid-template:auto/auto;
+        gap:50px;
     }
 }

@@ -7,7 +7,7 @@ import './css/style.css';
 
 
 
-const newsApiKey = '';//get api key form https://newsapi.org/
+const newsApiKey = ''; //get api key form https://newsapi.org/
 const stockApiKey = '';//get api key form https://twelvedata.com/
 const topic = [''];
 let images = [];

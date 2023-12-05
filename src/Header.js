@@ -30,7 +30,7 @@ const Navigation = (prop) => {
     const navLinks = useRef(null);
     return(
         <nav id='navigation-bar'>
-            <div id='dropDownMenu' onClick={() => showDropDown(root)}>Home</div>
+            <div id='dropDownMenu' onClick={() => showDropDown(root, navLinks)}>Home</div>
             <ul ref={navLinks}>
                 <li><a id='currentPage' onClick={(e) => {updateTopic(e,topic, changePage,root)}}>Home</a></li>
                 <li><a onClick={(e) => {updateTopic(e,topic,changePage,root)}}>Sports</a></li>
@@ -44,8 +44,14 @@ const Navigation = (prop) => {
     )
 }
 
-function showDropDown(root){
-    root.style.setProperty('--dropDownDisplay','block');
+function showDropDown(root, navLinks){
+    if(getComputedStyle(navLinks.current).display == 'block')
+    {
+        root.style.setProperty('--dropDownDisplay','none');  
+    }
+    else{
+        root.style.setProperty('--dropDownDisplay','block');    
+    }
 }
 
 function updateTopic(e,topic,changePage,root)
