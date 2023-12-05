@@ -50,7 +50,7 @@ function StockMarket({stockApiKey}){
         {
             let getLastOpenDate = `https://api.twelvedata.com/eod?symbol=${listOfStocks.toString()}&apikey=${stockApiKey}`
             
-            if(!saveStocks || (saveStocks.date != date.getDate() && saveStocks.month != date.getMonth()))
+            if(!saveStocks || saveStocks.date != date.getDate() || saveStocks.month != date.getMonth())
             {
                 try{
                     //gets last stock market open date
